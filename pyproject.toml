@@ -1,0 +1,21 @@
+[project]
+name = "mcp-use-test"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "browser-use[cli]>=0.9.5",
+    "langchain-openai>=1.0.1",
+    "mcp-use>=1.4.0",
+]
+
+[tool.uv.sources]
+mcp-use = { git = "https://github.com/mcp-use/mcp-use", rev = "326842511a79a0389bdb3f12a31c502f4b31dc6b", subdirectory = "libraries/python" }
+
+[dependency-groups]
+dev = ["ruff>=0.14.3"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
