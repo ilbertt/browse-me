@@ -1,5 +1,5 @@
 [project]
-name = "mcp-use-test"
+name = "browse-me"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -11,6 +11,8 @@ dependencies = [
 ]
 
 [tool.uv.sources]
+# https://github.com/mcp-use/mcp-use/pull/405 fixed the `recursion_limit` issue, but the patch has not been released yet.
+# TODO: Remove this once the patch has been released.
 mcp-use = { git = "https://github.com/mcp-use/mcp-use", rev = "326842511a79a0389bdb3f12a31c502f4b31dc6b", subdirectory = "libraries/python" }
 
 [dependency-groups]

@@ -13,6 +13,8 @@ Use [Fabric](https://onfabric.io/) to browse the web on my behalf.
 1. Install the dependencies:
 
     ```bash
+    uv venv
+    source .venv/bin/activate
     uv sync
     ```
 
@@ -24,4 +26,4 @@ Use [Fabric](https://onfabric.io/) to browse the web on my behalf.
     uv run main.py
     ```
 
-You can change the prompt in the `main.py` file to suit your needs.
+You can change the prompts in the `main.py` file to suit your needs.
