@@ -74,17 +74,12 @@ async def main():
     Current date and time is {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.
     """
 
-    additional_instructions = """
-    Always use the search_summaries_tapestries__tapestry_id__summaries_search_post tool to ask questions about my online activity. Use natural language for the query property of the body. For example, use 'What did the user watch on YouTube last week?' as the query.
-    """
-
     # Create agent with the client
     agent = MCPAgent(
         llm=llm,
         client=client,
         max_steps=AGENT_MAX_STEPS,
         system_prompt=system_prompt,
-        additional_instructions=additional_instructions,
     )
 
     # Run the query
