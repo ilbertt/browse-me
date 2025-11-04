@@ -4,7 +4,18 @@ import os
 
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+from mcp.types import CallToolRequestParams, CallToolResult
 from mcp_use import MCPAgent, MCPClient
+from mcp_use.client.middleware import Middleware, MiddlewareContext, NextFunctionT
+
+
+class CallToolLogMiddleware(Middleware):
+    async def on_call_tool(
+        self, context: MiddlewareContext[CallToolRequestParams], call_next: NextFunctionT
+    ) -> CallToolResult:
+        print(f"Calling tool {context.params.name} with arguments {context.params.arguments}")
+        return await call_next(context)
+
 
 load_dotenv()
 
@@ -61,7 +72,7 @@ async def main():
         }
     }
 
-    client = MCPClient(config)
+    client = MCPClient(config, middleware=[CallToolLogMiddleware()])
 
     llm = ChatOpenAI(model=OPENAI_LLM_MODEL)
 
